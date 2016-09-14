@@ -1,0 +1,36 @@
+html {
+  background: url(../images/UnitedStatesFlag.svg.png) no-repeat center center fixed;
+  background-size: cover; }
+
+body {
+  background: rgba(255, 255, 255, 0.1); }
+
+ul {
+  padding-left: 0; }
+  ul li {
+    list-style: none; }
+
+.game-title {
+  text-align: center; }
+
+.answer-choice {
+  margin-top: 1em; }
+  .answer-choice img {
+    height: 50%;
+    width: 70%; }
+
+.left-column {
+  float: left;
+  width: 25%; }
+
+.center-column {
+  float: left;
+  width: 50%; }
+  .center-column .flag {
+    height: 60%;
+    margin: 30% auto;
+    width: 80%; }
+
+.right-column {
+  float: right;
+  width: 25%; }
