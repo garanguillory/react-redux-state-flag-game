@@ -49,6 +49,33 @@ ul {
 }
 
 
+.game-progression {
+	text-align: center;
 
+	li {
+		display: inline-block;
+		margin-right: 1em;
+
+		&:last-child {
+			margin-right: 0;
+		}
+		button {
+			width: 7em;
+		}
+	}
+}
+
+.game-type {
+	text-align: center;
+
+	li {
+		display: inline-block;
+		margin-right: 1em;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
 
 

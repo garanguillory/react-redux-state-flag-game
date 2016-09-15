@@ -34,3 +34,21 @@ ul {
 .right-column {
   float: right;
   width: 25%; }
+
+.game-progression {
+  text-align: center; }
+  .game-progression li {
+    display: inline-block;
+    margin-right: 1em; }
+    .game-progression li:last-child {
+      margin-right: 0; }
+    .game-progression li button {
+      width: 7em; }
+
+.game-type {
+  text-align: center; }
+  .game-type li {
+    display: inline-block;
+    margin-right: 1em; }
+    .game-type li:last-child {
+      margin-right: 0; }
