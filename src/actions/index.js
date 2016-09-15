@@ -14,10 +14,11 @@ export function questions(number){
 	}
 }
 
-export function incrementQuestion(number){
+export function incrementQuestion(number, total){
 	return {
 		type: INCREMENT_QUESTION,
-		payload: number
+		payload: number,
+		total
 	}
 }
 

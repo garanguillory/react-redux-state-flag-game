@@ -28,8 +28,6 @@ function questionList(array){
 export default function(state = [], action){
 	switch (action.type){
 		case QUESTIONS:
-			// console.log(action.payload);
-			// console.log(questionNumbers(action.payload));
 			console.log(questionList(questionNumbers(action.payload)));
 			return questionList(questionNumbers(action.payload));
 	}

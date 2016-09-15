@@ -27,7 +27,7 @@ export class Game extends Component {
 		// need to add question number to the parameters
 	renderAnswerChoices(direction, number = 0){
 		var questions = this.props.questions;
-		var currentQuestion = this.props.currentQuestion;
+
 		if(direction === 'left'){
 			return (
 				<ul>
@@ -48,7 +48,7 @@ export class Game extends Component {
 		}
 	}
 
-	renderQuestion(number){
+	renderQuestion(number = 0){
 		var questions = this.props.questions;
 		return (
 			<img 
@@ -62,24 +62,26 @@ export class Game extends Component {
 
 
 	render(){
+		var currentQuestion = this.props.currentQuestion;
+
 		return (
 				<div className="container">
 					<div className="row">
 				  	<div className="left-column">
-				  		{this.renderAnswerChoices('left',0)}
+				  		{this.renderAnswerChoices('left',currentQuestion)}
 				    </div>
 				    <div className="center-column">
-				    	{this.renderQuestion(0)}
+				    	{this.renderQuestion(currentQuestion)}
 				    </div>
 				    <div className="right-column">
-				    	{this.renderAnswerChoices('right',0)}
+				    	{this.renderAnswerChoices('right',currentQuestion)}
 				    </div>
 			    </div>
 			  </div>
 		);
 	}
 
-} // end of class Question
+} // end of class Game
 
 function mapStateToProps(state){
 	return {
