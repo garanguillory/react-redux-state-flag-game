@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-// import {addTask} from '../actions/index';
+import {select} from '../actions/index';
 
 
 export class Game extends Component {
@@ -27,22 +27,36 @@ export class Game extends Component {
 		// need to add question number to the parameters
 	renderAnswerChoices(direction, number = 0){
 		var questions = this.props.questions;
+		var select = this.props.select;
+		var currentQuestion = this.props.currentQuestion;
 
 		if(direction === 'left'){
 			return (
 				<ul>
-					<li className="answer-choice"><img className='center-block' src={`../../assets/images/state_location/${questions.length ? questions[number].question.option1 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option1 : "Texas"}/></li>
-	  			<li className="answer-choice"><img className='center-block' src={`../../assets/images/state_location/${questions.length ? questions[number].question.option2 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option2 : "Texas"}/></li>
-	  			<li className="answer-choice"><img className='center-block' src={`../../assets/images/state_location/${questions.length ? questions[number].question.option3 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option3 : "Texas"}/></li>
+					<li className="answer-choice" onClick={() => select(questions[number].question.option1, currentQuestion)}>
+						<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option1 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option1 : "Texas"}/>
+					</li>
+	  			<li className="answer-choice" onClick={() => select(questions[number].question.option2, currentQuestion)}>
+	  				<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option2 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option2 : "Texas"}/>
+	  			</li>
+	  			<li className="answer-choice" onClick={() => select(questions[number].question.option3, currentQuestion)}>
+		  			<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option3 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option3 : "Texas"}/>
+		  		</li>
   			</ul>
 			);
 		}
 		if(direction === 'right'){
 			return (
 				<ul>
-					<li className="answer-choice"><img className='center-block' src={`../../assets/images/state_location/${questions.length ? questions[number].question.option4 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option4 : "Texas"}/></li>
-	  			<li className="answer-choice"><img className='center-block' src={`../../assets/images/state_location/${questions.length ? questions[number].question.option5 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option5 : "Texas"}/></li>
-	  			<li className="answer-choice"><img className='center-block' src={`../../assets/images/state_location/${questions.length ? questions[number].question.option6 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option6 : "Texas"}/></li>
+					<li className="answer-choice" onClick={() => select(questions[number].question.option4, currentQuestion)}>
+						<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option4 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option4 : "Texas"}/>
+					</li>
+	  			<li className="answer-choice" onClick={() => select(questions[number].question.option5, currentQuestion)}>
+		  			<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option5 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option5 : "Texas"}/>
+	  			</li>
+	  			<li className="answer-choice" onClick={() => select(questions[number].question.option6, currentQuestion)}>
+		  			<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option6 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option6 : "Texas"}/>
+	  			</li>
 				</ul>
 			);
 		}
@@ -53,8 +67,8 @@ export class Game extends Component {
 		return (
 			<img 
 			className="flag" 
-			src={`../../assets/images/state_flag/${questions.length ? questions[number].question.question : "Texas"}StateFlag.svg.png`} 
-			alt={questions.length ? questions[number].question.question : "Texas"}
+			src={`../../assets/images/state_flag/${questions.length ? questions[number].question.answer : "Texas"}StateFlag.svg.png`} 
+			alt={questions.length ? questions[number].question.answer : "Texas"}
 			/>
 		);
 	}
@@ -90,12 +104,11 @@ function mapStateToProps(state){
 	}
 }
 
-// function mapDispatchToProps(dispatch){
-// 	return bindActionCreators({addTask: addTask}, dispatch);
-// }
+function mapDispatchToProps(dispatch){
+	return bindActionCreators({select}, dispatch);
+}
 
-// export default connect(null, mapDispatchToProps)(AddTaskForm);
-export default connect(mapStateToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
 
 
 
