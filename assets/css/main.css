@@ -10,6 +10,9 @@ ul {
   ul li {
     list-style: none; }
 
+.centered {
+  text-align: center; }
+
 .game-title {
   text-align: center; }
 

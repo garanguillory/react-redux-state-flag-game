@@ -24,20 +24,19 @@ export class Game extends Component {
 		// this.props.addTask(this.state.task);
 		// this.setState({task: ''});
 	}
-		// number will be the current question
-		// filter left and right based on odd/even option#
-		// re-insert the <ul></ul>
+		
 	renderAnswerChoices(number){
 		var questions = this.props.questions;
 		var select = this.props.select;
 		var currentQuestion = this.props.currentQuestion;
-		// var highlight = function(option){
-		// 	if(!questions[number].answered){
-		// 		return option === questions[number].selected ? 'selected' : '';
-		// 	} else if(questions[number].answered){
-		// 		return questions[number].selected === questions[number].question.answer ? console.log(this) : '';
-		// 	}
-		// };
+
+		var highlight = function(option){
+			if(!questions[number].answered){
+				return option === questions[number].selected ? 'selected' : '';
+			} else if(questions[number].answered){
+				return option === questions[number].question.answer ? 'correct' : 'incorrect';
+			}
+		};
 
 		return questions[number].question.options.map((option, index) => {
 				return (
@@ -45,7 +44,7 @@ export class Game extends Component {
 							onClick={() => select(option, currentQuestion)}
 							key={index}>
 						<img 
-							className={option === questions[number].selected ? 'selected' : ''}
+							className={highlight(option)}
 							src={`../../assets/images/state_location/${questions.length ? option : "Texas"}StateLocation.svg.png`}
 							alt={questions.length ? option : "Texas"}/>
 					</li>
@@ -53,43 +52,6 @@ export class Game extends Component {
 		});
 	}
 
-	// renderAnswerChoices(direction, number = 0){
-	// 	var questions = this.props.questions;
-	// 	var select = this.props.select;
-	// 	var currentQuestion = this.props.currentQuestion;
-
-	// 	if(direction === 'left'){
-	// 		return (
-	// 			<ul>
-	// 				<li className="answer-choice" 
-	// 						onClick={() => select(questions[number].question.option1, currentQuestion)}>
-	// 					<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option1 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option1 : "Texas"}/>
-	// 				</li>
-	//   			<li className="answer-choice" onClick={() => select(questions[number].question.option2, currentQuestion)}>
-	//   				<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option2 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option2 : "Texas"}/>
-	//   			</li>
-	//   			<li className="answer-choice" onClick={() => select(questions[number].question.option3, currentQuestion)}>
-	// 	  			<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option3 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option3 : "Texas"}/>
-	// 	  		</li>
- //  			</ul>
-	// 		);
-	// 	}
-	// 	if(direction === 'right'){
-	// 		return (
-	// 			<ul>
-	// 				<li className="answer-choice" onClick={() => select(questions[number].question.option4, currentQuestion)}>
-	// 					<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option4 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option4 : "Texas"}/>
-	// 				</li>
-	//   			<li className="answer-choice" onClick={() => select(questions[number].question.option5, currentQuestion)}>
-	// 	  			<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option5 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option5 : "Texas"}/>
-	//   			</li>
-	//   			<li className="answer-choice" onClick={() => select(questions[number].question.option6, currentQuestion)}>
-	// 	  			<img src={`../../assets/images/state_location/${questions.length ? questions[number].question.option6 : "Texas"}StateLocation.svg.png`} alt={questions.length ? questions[number].question.option6 : "Texas"}/>
-	//   			</li>
-	// 			</ul>
-	// 		);
-	// 	}
-	// }
 
 	renderQuestion(number = 0){
 		var questions = this.props.questions;
@@ -109,9 +71,9 @@ export class Game extends Component {
 		var questions = this.props.questions;
 		return (
 				<div className="container">
+					{questions.length ? <div className="row centered"> <h4> Question Number: {currentQuestion + 1} </h4> </div> : ''}
 					<div className="row">
 				  	<div className="left-column">
-				  		{/*this.renderAnswerChoices('left',currentQuestion)*/}
 				  		<ul>
 					  		{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 === 0}) : ''}
 				  		</ul>

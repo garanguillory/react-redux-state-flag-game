@@ -2,9 +2,6 @@ export const QUESTIONS = 'QUESTIONS';
 export const INCREMENT_QUESTION = 'INCREMENT_QUESTION';
 export const DECREMENT_QUESTION = 'DECREMENT_QUESTION';
 export const SELECTED = 'SELECTED';
-// export const TWENTY_QUESTIONS = 'TWENTY_QUESTIONS';
-// export const FIFTY_QUESTIONS = 'FIFTY_QUESTIONS';
-
 
 
 export function questions(number){
