@@ -52,3 +52,12 @@ ul {
     margin-right: 1em; }
     .game-type li:last-child {
       margin-right: 0; }
+
+.selected {
+  border: 0.5em solid white; }
+
+.correct {
+  border: 0.5em solid green; }
+
+.incorrect {
+  border: 0.5em solid red; }
