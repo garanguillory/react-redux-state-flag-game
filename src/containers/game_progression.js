@@ -34,7 +34,7 @@ export class GameProgression extends Component {
 							type="button" 
 							className="btn btn-secondary" 
 							onClick={() => this.props.answer(questions[currentQuestion].selected, currentQuestion)}
-							disabled={!questions.length || !questions[currentQuestion].selected}>
+							disabled={!questions.length || !questions[currentQuestion].selected || questions[currentQuestion].answered} >
 								Submit
 							</button>
 						</li>

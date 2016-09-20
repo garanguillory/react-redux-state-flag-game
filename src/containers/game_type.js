@@ -8,42 +8,60 @@ export class GameType extends Component {
 	constructor(props){
 		super(props);
 
-		// console.log(this.props.questions);
+		console.log(this.props.questionList);
 	}
 
 	render(){
 		return (
-			<div className="container">
-				<div className="row">
-					<ul className="game-type">
-						<li>
-							<button 
-							type="button" 
-							className="btn btn-secondary" 
-							onClick={() => this.props.questions(10)}>
-								10
-							</button>
-						</li>
-						<li>
-							<button 
-							type="button" 
-							className="btn btn-secondary" 
-							onClick={() => this.props.questions(20)}>
-								20
-							</button>
-						</li>
-						<li>
-							<button 
-							type="button" 
-							className="btn btn-secondary" 
-							onClick={() => this.props.questions(50)}>
-								50
-							</button>
-						</li>
-					</ul>
+			<div>
+				<div className={`container ${this.props.questionList.length ? 'hide' : ''}`}>
+					<div className="row">
+						<div className="game-instructions">
+							<h3 className="centered">Can you match the state to its flag?</h3>
+							<ul>
+								<li>Click on a potential answer choice to SELECT it</li>
+								<li>Click on SUBMIT from the buttons below to ANSWER the question</li>
+								<li>Choose wisely, once you click SUBMIT, the answer choice is locked in</li>
+								<li>Now, select a game of 10, 20, 50 questions to begin</li>
+							</ul>
+							<ul className="game-type">
+								<li>
+									<button 
+									type="button" 
+									className="btn btn-secondary" 
+									onClick={() => this.props.questions(10)}>
+										10
+									</button>
+								</li>
+								<li>
+									<button 
+									type="button" 
+									className="btn btn-secondary" 
+									onClick={() => this.props.questions(20)}>
+										20
+									</button>
+								</li>
+								<li>
+									<button 
+									type="button" 
+									className="btn btn-secondary" 
+									onClick={() => this.props.questions(50)}>
+										50
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		);
+	}
+}
+
+function mapStateToProps(state){
+	return {
+		currentQuestion: state.currentQuestion,
+		questionList: state.questions
 	}
 }
 
@@ -52,4 +70,6 @@ function mapDispatchToProps(dispatch){
 	return bindActionCreators({questions}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(GameType);
+export default connect(mapStateToProps, mapDispatchToProps)(GameType);
+
+

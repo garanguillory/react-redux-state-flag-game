@@ -8,7 +8,6 @@ export default class App extends Component {
   render() {
     return (
       <div>
-      	<h3 className="game-title">State Flags</h3>
       	<GameType />
       	<Game />
       	<GameProgression />
