@@ -1,23 +1,26 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {incrementQuestion, decrementQuestion} from '../actions/index';
+import {incrementQuestion, decrementQuestion, answer} from '../actions/index';
+
+import classNames from 'classnames';
 
 export class GameProgression extends Component {
 	constructor(props){
 		super(props);
 
-		console.log(`currentQuestion: ${this.props.currentQuestion}`);
+		
 	}
 
 	render(){
 		var currentQuestion = this.props.currentQuestion;
 		var questions = this.props.questions;
+
 		return (
-			<div className="container">
+			<div className={`container ${!questions.length ? 'hide' : ''}`}>
 				<div className="row">
 					<ul className="game-progression">
-						<li> {/* need to disable button if user is on the first question*/}
+						<li>
 							<button 
 								type="button" 
 								className="btn btn-secondary"
@@ -30,11 +33,12 @@ export class GameProgression extends Component {
 							<button 
 							type="button" 
 							className="btn btn-secondary" 
-							disabled={!questions.length}> {/*need to disable if no answer choice selected (selected === false)*/}
+							onClick={() => this.props.answer(questions[currentQuestion].selected, currentQuestion)}
+							disabled={!questions.length || !questions[currentQuestion].selected}>
 								Submit
 							</button>
 						</li>
-						<li> {/* need to disable button if user is on the last question*/}
+						<li>
 							<button 
 								type="button" 
 								className="btn btn-secondary"
@@ -48,9 +52,8 @@ export class GameProgression extends Component {
 			</div>
 		);
 	}
-}
+} // end GameProgression class
 
-// enable selection of answer choices (add CSS etc.)
 // need to disable if no answer choice selected (selected === false)
 
 
@@ -62,7 +65,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({incrementQuestion, decrementQuestion}, dispatch);
+	return bindActionCreators({incrementQuestion, decrementQuestion, answer}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameProgression);

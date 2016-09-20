@@ -1,6 +1,6 @@
-import {QUESTIONS, SELECTED} from '../actions/index';
+import {QUESTIONS, SELECTED, ANSWERED} from '../actions/index';
 
-var questionNumbers = function(number){
+function questionNumbers(number){
 	var array = []
 	while(array.length < number){
 	  var randomnumber=Math.floor(Math.random() * 50);
@@ -30,13 +30,29 @@ const selecting = (state = {}, action, index) => {
 	switch (action.type){
 		case SELECTED:
 		  if(state.id === action.questionNumber){
-		  	console.log('state: ', state);
-		  	console.log("new: ", {...state, selected: action.payload});
-		  		if(state.selected){
-				    return state.selected === action.payload ? {...state, selected: ""} : {...state, selected: action.payload}
-		  		} else {
-		  			return {...state, selected: action.payload}
-		  		}
+	  		if(state.selected){
+			    return state.selected === action.payload ? {...state, selected: ""} : {...state, selected: action.payload}
+	  		} else {
+	  			return {...state, selected: action.payload}
+	  		}
+		  } else {
+			  return state
+			}
+		default:
+		  return state
+	}
+}
+
+// to answer a selected answer choice
+const answering = (state = {}, action, index) => {
+	switch (action.type){
+		case ANSWERED:
+		  if(state.id === action.questionNumber && state.selected){
+		  	if(state.selected === state.question.answer){
+		  		return {...state, answered: true, correct: true}
+		  	} else {
+		  		return {...state, answered: true, correct: false}
+		  	}
 		  } else {
 			  return state
 			}
@@ -48,13 +64,14 @@ const selecting = (state = {}, action, index) => {
 export default function(state = [], action){
 	switch (action.type){
 		case QUESTIONS:
-			// console.log('questionList: ', questionList(questionNumbers(action.payload)));
 			return questionList(questionNumbers(action.payload));
 		case SELECTED:
-		// console.log("state: ", state);
-		// console.log("action: ", action);
 			return state.map((question, index) =>
 			  selecting(question, action, index)
+			)
+		case ANSWERED:
+			return state.map((question, index) =>
+			  answering(question, action, index)
 			)
 		default:
 			return state

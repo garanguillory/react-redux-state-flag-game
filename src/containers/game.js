@@ -31,7 +31,6 @@ export class Game extends Component {
 		var questions = this.props.questions;
 		var select = this.props.select;
 		var currentQuestion = this.props.currentQuestion;
-		
 
 		return questions[number].question.options.map((option, index) => {
 			var chosen = classNames({

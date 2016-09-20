@@ -13,6 +13,9 @@ ul {
 .centered {
   text-align: center; }
 
+.hide {
+  display: none; }
+
 .game-title {
   text-align: center; }
 

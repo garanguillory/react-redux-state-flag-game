@@ -2,6 +2,7 @@ export const QUESTIONS = 'QUESTIONS';
 export const INCREMENT_QUESTION = 'INCREMENT_QUESTION';
 export const DECREMENT_QUESTION = 'DECREMENT_QUESTION';
 export const SELECTED = 'SELECTED';
+export const ANSWERED = 'ANSWERED';
 
 
 export function questions(number){
@@ -14,6 +15,14 @@ export function questions(number){
 export function select(answerChoice, questionNumber){
 	return {
 		type: SELECTED,
+		payload: answerChoice,
+		questionNumber 
+	}
+}
+
+export function answer(answerChoice, questionNumber){
+	return {
+		type: ANSWERED,
 		payload: answerChoice,
 		questionNumber 
 	}
