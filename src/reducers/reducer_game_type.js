@@ -18,7 +18,7 @@ function questionList(array){
 		return {
 			id: index,
 			question: questions[number],
-			selected: "none",
+			selected: "",
 			correct: false,
 			answered: false
 		}
@@ -30,8 +30,13 @@ const selecting = (state = {}, action, index) => {
 	switch (action.type){
 		case SELECTED:
 		  if(state.id === action.questionNumber){
+		  	console.log('state: ', state);
 		  	console.log("new: ", {...state, selected: action.payload});
-		    return {...state, selected: action.payload}
+		  		if(state.selected){
+				    return state.selected === action.payload ? {...state, selected: ""} : {...state, selected: action.payload}
+		  		} else {
+		  			return {...state, selected: action.payload}
+		  		}
 		  } else {
 			  return state
 			}
@@ -43,11 +48,11 @@ const selecting = (state = {}, action, index) => {
 export default function(state = [], action){
 	switch (action.type){
 		case QUESTIONS:
-			console.log('questionList: ', questionList(questionNumbers(action.payload)));
+			// console.log('questionList: ', questionList(questionNumbers(action.payload)));
 			return questionList(questionNumbers(action.payload));
 		case SELECTED:
-		console.log("state: ", state);
-		console.log("action: ", action);
+		// console.log("state: ", state);
+		// console.log("action: ", action);
 			return state.map((question, index) =>
 			  selecting(question, action, index)
 			)

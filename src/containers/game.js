@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {select} from '../actions/index';
 
+import classNames from 'classnames';
+
 
 export class Game extends Component {
 	constructor(props) {
@@ -29,22 +31,20 @@ export class Game extends Component {
 		var questions = this.props.questions;
 		var select = this.props.select;
 		var currentQuestion = this.props.currentQuestion;
-
-		var highlight = function(option){
-			if(!questions[number].answered){
-				return option === questions[number].selected ? 'selected' : '';
-			} else if(questions[number].answered){
-				return option === questions[number].question.answer ? 'correct' : 'incorrect';
-			}
-		};
+		
 
 		return questions[number].question.options.map((option, index) => {
+			var chosen = classNames({
+				'selected': questions[number].selected === option,
+				'correct': questions[number].answered && questions[number].selected === option && option === questions[number].question.answer,
+				'incorrect': questions[number].answered && questions[number].selected === option && option !== questions[number].question.answer
+			});
 				return (
 					<li className="answer-choice" 
 							onClick={() => select(option, currentQuestion)}
 							key={index}>
 						<img 
-							className={highlight(option)}
+							className={chosen}
 							src={`../../assets/images/state_location/${questions.length ? option : "Texas"}StateLocation.svg.png`}
 							alt={questions.length ? option : "Texas"}/>
 					</li>
