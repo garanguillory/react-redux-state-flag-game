@@ -1,9 +1,9 @@
-html{
+html {
   background: url(../images/UnitedStatesFlag.svg.png) no-repeat center center fixed;
   background-size: cover;
 }
 
-body{
+body {
   background: rgba(255,255,255,0.1);
 }
 
@@ -29,9 +29,15 @@ ul {
 .correct {
 	border: 0.5em solid green;
 }
+.right {
+	background: green;
+}
 
 .incorrect {
 	border: 0.5em solid red;
+}
+.wrong {
+	background: red;
 }
 
 .game-title {
@@ -125,6 +131,32 @@ ul {
 		}
 	}
 }
+
+
+.results-row {
+	li {
+		display: inline-block;
+		margin-right: 1em;
+
+		.results-flag {
+			box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.67);
+			height: 200px;
+			width: 300px;
+		}
+
+		.results-map {
+			box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.67);
+			height: 150px;
+			width: 250px;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
+
 
 
 

@@ -45,7 +45,7 @@ export class Game extends Component {
 						<img 
 							className={chosen}
 							src={`../../assets/images/state_location/${questions.length ? option : "Texas"}StateLocation.svg.png`}
-							alt={questions.length ? option : "Texas"}/>
+							alt={questions.length ? option : "Texas"} />
 					</li>
 				);
 		});
@@ -56,10 +56,9 @@ export class Game extends Component {
 		var questions = this.props.questions;
 		return (
 			<img 
-			className="flag" 
-			src={`../../assets/images/state_flag/${questions.length ? questions[number].question.answer : "Texas"}StateFlag.svg.png`} 
-			alt={questions.length ? questions[number].question.answer : "Texas"}
-			/>
+				className="flag" 
+				src={`../../assets/images/state_flag/${questions.length ? questions[number].question.answer : "Texas"}StateFlag.svg.png`} 
+				alt={questions.length ? questions[number].question.answer : "Texas"} />
 		);
 	}
 
@@ -68,6 +67,7 @@ export class Game extends Component {
 	render(){
 		var currentQuestion = this.props.currentQuestion;
 		var questions = this.props.questions;
+		
 		return (
 				<div className="container">
 					{questions.length ? <div className="row centered"> <h4> Question Number: {currentQuestion + 1} </h4> </div> : ''}
