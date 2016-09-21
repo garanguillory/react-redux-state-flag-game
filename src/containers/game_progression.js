@@ -66,7 +66,7 @@ export class GameProgression extends Component {
 					</ul>
 				</div>
 				<div className="row">
-					<h4 className="centered">Questions Numbers Remaining:</h4>
+					<h4 className="centered">Questions Remaining</h4>
 					<ul className="game-questions-remaining centered">
 						{ questions.length ? this.renderRemainingQuestions() : ''}
 					</ul>

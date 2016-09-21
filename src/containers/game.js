@@ -62,42 +62,21 @@ export class Game extends Component {
 				return question.answered
 		});
 
-		// return (
-		// 		<div className={`container ${completed.length === questions.length ? 'hide' : ''}`}>
-		// 			{questions.length ? <div className="row centered"> <h4> Question Number: {currentQuestion + 1} </h4> </div> : ''}
-		// 			<div className="row">
-		// 		  	<div className="left-column">
-		// 		  		<ul>
-		// 			  		{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 === 0}) : ''}
-		// 		  		</ul>
-		// 		    </div>
-		// 		    <div className="center-column">
-		// 		    	{ questions.length ? this.renderQuestion(currentQuestion) : ''}
-		// 		    </div>
-		// 		    <div className="right-column">
-		// 			    <ul>
-		// 			    	{questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 !== 0}) : ''}
-		// 			    </ul>
-		// 		    </div>
-		// 	    </div>
-		// 	  </div>
-		// );
-
 		return (
 				<div className={`container ${completed.length === questions.length ? 'hide' : ''}`}>
-					{questions.length ? <div className="row centered"> <h4> Question Number: {currentQuestion + 1} </h4> </div> : ''}
+					{questions.length ? <div className="row centered"> <h4> Question #{currentQuestion + 1} </h4> </div> : ''}
 					<div className="row">
 						<ul className="game-layout centered">
 							<li>
-					  		<ul className="left-column">
+					  		<ul>
 						  		{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 === 0}) : ''}
 					  		</ul>
 							</li>
-							<li className="center-column">
+							<li>
 								{ questions.length ? this.renderQuestion(currentQuestion) : ''}
 							</li>
 							<li>
-								<ul className="right-column">
+								<ul>
 						    	{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 !== 0}) : ''}
 						    </ul>
 							</li>

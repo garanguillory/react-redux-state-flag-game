@@ -38,12 +38,13 @@ ul {
   background: rgba(255, 255, 255, 0.6);
   border-radius: 4px;
   margin: 2em;
+  margin-top: 5em;
   padding: 2em; }
   .game-instructions ul {
     margin: 0 auto;
     width: 50%; }
     .game-instructions ul li {
-      margin-bottom: 1em; }
+      margin-bottom: 0.5em; }
 
 .answer-choice {
   margin-top: 1em; }
@@ -73,7 +74,8 @@ ul {
       margin-right: 0%; }
 
 .game-progression {
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 1em; }
   .game-progression li {
     display: inline-block;
     margin-right: 1em; }

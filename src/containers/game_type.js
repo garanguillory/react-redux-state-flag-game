@@ -17,7 +17,7 @@ export class GameType extends Component {
 				<div className={`container ${this.props.questionList.length ? 'hide' : ''}`}>
 					<div className="row">
 						<div className="game-instructions">
-							<h3 className="centered">Can you match the state to its flag?</h3>
+							<h2 className="centered">Can you match the state to its flag?</h2>
 							<ul>
 								<li>Click on a potential answer choice to SELECT it</li>
 								<li>Click SUBMIT from the buttons below to ANSWER the question</li>
