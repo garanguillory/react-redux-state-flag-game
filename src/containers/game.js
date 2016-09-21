@@ -9,22 +9,13 @@ import classNames from 'classnames';
 export class Game extends Component {
 	constructor(props) {
 		super(props);
-
-		// this.state = {task: ''};
-		// this.onInputChange = this.onInputChange.bind(this);
-		// this.onFormSubmit = this.onFormSubmit.bind(this);
-	}
-
-	onInputChange(event){
-		// console.log(event.target.value);
-		// this.setState({task: event.target.value});
 	}
 
 	onFormSubmit(event){
 		event.preventDefault();
-		// add task to List
-		// this.props.addTask(this.state.task);
-		// this.setState({task: ''});
+		// enable user to hit Enter to submit 
+		// an answer choice
+		// need to wrap submit button in a form
 	}
 		
 	renderAnswerChoices(number){
@@ -71,26 +62,50 @@ export class Game extends Component {
 				return question.answered
 		});
 
+		// return (
+		// 		<div className={`container ${completed.length === questions.length ? 'hide' : ''}`}>
+		// 			{questions.length ? <div className="row centered"> <h4> Question Number: {currentQuestion + 1} </h4> </div> : ''}
+		// 			<div className="row">
+		// 		  	<div className="left-column">
+		// 		  		<ul>
+		// 			  		{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 === 0}) : ''}
+		// 		  		</ul>
+		// 		    </div>
+		// 		    <div className="center-column">
+		// 		    	{ questions.length ? this.renderQuestion(currentQuestion) : ''}
+		// 		    </div>
+		// 		    <div className="right-column">
+		// 			    <ul>
+		// 			    	{questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 !== 0}) : ''}
+		// 			    </ul>
+		// 		    </div>
+		// 	    </div>
+		// 	  </div>
+		// );
+
 		return (
 				<div className={`container ${completed.length === questions.length ? 'hide' : ''}`}>
 					{questions.length ? <div className="row centered"> <h4> Question Number: {currentQuestion + 1} </h4> </div> : ''}
 					<div className="row">
-				  	<div className="left-column">
-				  		<ul>
-					  		{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 === 0}) : ''}
-				  		</ul>
-				    </div>
-				    <div className="center-column">
-				    	{ questions.length ? this.renderQuestion(currentQuestion) : ''}
-				    </div>
-				    <div className="right-column">
-					    <ul>
-					    	{questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 !== 0}) : ''}
-					    </ul>
-				    </div>
+						<ul className="game-layout centered">
+							<li>
+					  		<ul className="left-column">
+						  		{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 === 0}) : ''}
+					  		</ul>
+							</li>
+							<li className="center-column">
+								{ questions.length ? this.renderQuestion(currentQuestion) : ''}
+							</li>
+							<li>
+								<ul className="right-column">
+						    	{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 !== 0}) : ''}
+						    </ul>
+							</li>
+						</ul>
 			    </div>
 			  </div>
 		);
+
 	}
 
 } // end of class Game
