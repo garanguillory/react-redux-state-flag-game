@@ -1,4 +1,4 @@
-import {QUESTIONS, SELECTED, ANSWERED} from '../actions/index';
+import {QUESTIONS, SELECTED, ANSWERED, NEW_GAME} from '../actions/index';
 
 function questionNumbers(number){
 	var array = []
@@ -73,6 +73,8 @@ export default function(state = [], action){
 			return state.map((question, index) =>
 			  answering(question, action, index)
 			)
+		case NEW_GAME:
+			return state = []
 		default:
 			return state
 	}
@@ -150,7 +152,7 @@ const questions = [
   {answer: states[12], options: [states[13], states[12], states[15], states[30], states[44], states[37]]},
   {answer: states[13], options: [states[13], states[1], states[12], states[33], states[43], states[0]]},
   {answer: states[14], options: [states[37], states[14], states[17], states[30], states[42], states[1]]},
-  {answer: states[15], options: [states[38], states[15], states[18], states[36], states[41], states[2]]},
+  {answer: states[15], options: [states[38], states[15], states[18], states[26], states[41], states[2]]},
   {answer: states[16], options: [states[39], states[2], states[16], states[3], states[31], states[28]]},
   {answer: states[17], options: [states[40], states[3], states[19], states[17], states[41], states[48]]},
   {answer: states[18], options: [states[41], states[4], states[20], states[18], states[21], states[31]]},
@@ -163,7 +165,7 @@ const questions = [
   {answer: states[25], options: [states[48], states[10], states[45], states[25], states[4], states[37]]},
   {answer: states[26], options: [states[49], states[26], states[44], states[4], states[5], states[17]]},
   {answer: states[27], options: [states[20], states[27], states[2], states[42], states[6], states[16]]},
-  {answer: states[28], options: [states[21], states[28], states[43], states[1], states[7], states[15]]},
+  {answer: states[28], options: [states[21], states[28], states[43], states[44], states[7], states[29]]},
   {answer: states[29], options: [states[22], states[29], states[42], states[0], states[8], states[14]]},
   {answer: states[30], options: [states[23], states[41], states[30], states[5], states[9], states[13]]},
   {answer: states[31], options: [states[24], states[42], states[31], states[17], states[10], states[3]]},

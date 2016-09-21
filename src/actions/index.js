@@ -1,6 +1,8 @@
 export const QUESTIONS = 'QUESTIONS';
+export const NEW_GAME = 'NEW_GAME';
 export const INCREMENT_QUESTION = 'INCREMENT_QUESTION';
 export const DECREMENT_QUESTION = 'DECREMENT_QUESTION';
+export const SET_QUESTION = 'SET_QUESTION';
 export const SELECTED = 'SELECTED';
 export const ANSWERED = 'ANSWERED';
 
@@ -28,6 +30,13 @@ export function answer(answerChoice, questionNumber){
 	}
 }
 
+export function setQuestion(number){
+	return {
+		type: SET_QUESTION,
+		payload: number
+	}
+}
+
 export function incrementQuestion(number, total){
 	return {
 		type: INCREMENT_QUESTION,
@@ -43,11 +52,10 @@ export function decrementQuestion(number){
 	}
 }
 
-// let nextBookId = 100;
-// export function addBook(book){
-// 	return {
-// 		type: ADD_BOOK,
-// 		payload: book,
-// 		id: nextBookId++
-// 	}
-// }
+export function newGame(number){
+	return {
+		type: NEW_GAME,
+		payload: number
+	}
+}
+

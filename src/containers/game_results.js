@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-// import {newGame} from '../actions/index';
+import {newGame} from '../actions/index';
 
 import classNames from 'classnames';
 
@@ -10,7 +10,6 @@ export class GameResults extends Component {
 	constructor(props){
 		super(props);
 
-		console.log('GameResults: ', this.props.questions);
 	}
 
 	renderResults(){
@@ -27,19 +26,19 @@ export class GameResults extends Component {
 						key={index}>
 
 					<ul className="results-row">
-						<li> {/* question image FLAG */}
+						<li>
 							<img 
 								className="results-flag" 
 								src={`../../assets/images/state_flag/${question.question.answer}StateFlag.svg.png`} 
 								alt={question.question.answer} />
 						</li>
-						<li> {/* correct answer image MAP */}
+						<li>
 							<img 
 								className="results-map"
 								src={`../../assets/images/state_location/${question.question.answer}StateLocation.svg.png`}
 								alt={question.question.answer} />
 						</li>
-						<li> {/* user answer image MAP */}
+						<li>
 							<img 
 								className="results-map"
 								src={`../../assets/images/state_location/${question.selected ? question.selected: "Texas"}StateLocation.svg.png`}
@@ -54,13 +53,14 @@ export class GameResults extends Component {
 		})
 	}
 
-	// render only when all questions have been answered how???
-
 	render(){
 		var currentQuestion = this.props.currentQuestion;
 		var questions = this.props.questions;
 		var completed = questions.filter((question) => {
 				return question.answered
+		});
+		var correct = questions.filter((question) => {
+				return question.correct;
 		});
 
 		return (
@@ -68,7 +68,13 @@ export class GameResults extends Component {
 				<div className={`container ${completed.length === questions.length && questions.length ? '' : 'hide'}`}>
 					<div className="row">
 						<div className="game-results">
-							<h3 className="centered">Results:</h3>
+							<h3 className="centered">
+								Play again? 
+								<button onClick={() => this.props.newGame(0)} className="btn btn-secondary">
+									New Game 
+								</button>
+							</h3>
+							<h3 className="centered">Results: <span>{correct.length}/{questions.length}</span></h3>
 								<ul>
 									{ questions.length ? this.renderResults() : ''}
 								</ul>
@@ -88,10 +94,10 @@ function mapStateToProps(state){
 }
 
 
-// function mapDispatchToProps(dispatch){
-// 	return bindActionCreators({newGame}, dispatch);
-// }
+function mapDispatchToProps(dispatch){
+	return bindActionCreators({newGame}, dispatch);
+}
 
-export default connect(mapStateToProps)(GameResults);
+export default connect(mapStateToProps, mapDispatchToProps)(GameResults);
 
 

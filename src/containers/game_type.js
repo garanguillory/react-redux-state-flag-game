@@ -20,9 +20,10 @@ export class GameType extends Component {
 							<h3 className="centered">Can you match the state to its flag?</h3>
 							<ul>
 								<li>Click on a potential answer choice to SELECT it</li>
-								<li>Click on SUBMIT from the buttons below to ANSWER the question</li>
+								<li>Click SUBMIT from the buttons below to ANSWER the question</li>
 								<li>Choose wisely, once you click SUBMIT, the answer choice is locked in</li>
-								<li>Now, select a game of 10, 20, 50 questions to begin</li>
+								<li>The results of your game will appear once all questions have been answered</li>
+								<li>Select a game of 10, 20, or 50 questions to begin</li>
 							</ul>
 							<ul className="game-type">
 								<li>

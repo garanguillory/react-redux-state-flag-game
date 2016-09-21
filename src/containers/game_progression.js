@@ -1,15 +1,28 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {incrementQuestion, decrementQuestion, answer} from '../actions/index';
+import {incrementQuestion, decrementQuestion, setQuestion, answer} from '../actions/index';
 
 import classNames from 'classnames';
 
 export class GameProgression extends Component {
 	constructor(props){
 		super(props);
+	}
 
-		
+	renderRemainingQuestions(){
+		var questions = this.props.questions;
+		return questions.map((question,index) => {
+			if(!question.answered){
+				return (
+					<li className="btn btn-secondary btn-circle" 
+							onClick={() => this.props.setQuestion(index)} 	
+							key={index}>
+						<span>{index + 1}</span>
+					</li>
+				);
+			}
+		});
 	}
 
 	render(){
@@ -18,8 +31,6 @@ export class GameProgression extends Component {
 		var completed = questions.filter((question) => {
 				return question.answered
 		});
-
-		// <div className={`container ${completed.length === questions.length ? '' : 'hide'}`}>
 
 		return (
 			<div className={`container ${completed.length === questions.length ? 'hide' : ''}`}>
@@ -54,12 +65,16 @@ export class GameProgression extends Component {
 						</li>
 					</ul>
 				</div>
+				<div className="row">
+					<h4 className="centered">Questions Numbers Remaining:</h4>
+					<ul className="game-questions-remaining centered">
+						{ questions.length ? this.renderRemainingQuestions() : ''}
+					</ul>
+				</div>
 			</div>
 		);
 	}
 } // end GameProgression class
-
-// need to disable if no answer choice selected (selected === false)
 
 
 function mapStateToProps(state){
@@ -70,7 +85,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({incrementQuestion, decrementQuestion, answer}, dispatch);
+	return bindActionCreators({incrementQuestion, decrementQuestion, setQuestion, answer}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameProgression);
