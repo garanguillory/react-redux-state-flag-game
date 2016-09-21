@@ -15,9 +15,14 @@ export class GameProgression extends Component {
 	render(){
 		var currentQuestion = this.props.currentQuestion;
 		var questions = this.props.questions;
+		var completed = questions.filter((question) => {
+				return question.answered
+		});
+
+		// <div className={`container ${completed.length === questions.length ? '' : 'hide'}`}>
 
 		return (
-			<div className={`container ${!questions.length ? 'hide' : ''}`}>
+			<div className={`container ${completed.length === questions.length ? 'hide' : ''}`}>
 				<div className="row">
 					<ul className="game-progression">
 						<li>

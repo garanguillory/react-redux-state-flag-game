@@ -67,9 +67,12 @@ export class Game extends Component {
 	render(){
 		var currentQuestion = this.props.currentQuestion;
 		var questions = this.props.questions;
-		
+		var completed = questions.filter((question) => {
+				return question.answered
+		});
+
 		return (
-				<div className="container">
+				<div className={`container ${completed.length === questions.length ? 'hide' : ''}`}>
 					{questions.length ? <div className="row centered"> <h4> Question Number: {currentQuestion + 1} </h4> </div> : ''}
 					<div className="row">
 				  	<div className="left-column">
