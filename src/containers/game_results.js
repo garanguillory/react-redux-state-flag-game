@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {newGame} from '../actions/index';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import classNames from 'classnames';
 
@@ -63,6 +64,12 @@ export class GameResults extends Component {
 				return question.correct;
 		});
 
+		const transitionOptions = {
+			transitionName: "roll",
+			transitionEnterTimeout: 500,
+			transitionLeaveTimeout: 500
+		};
+
 		return (
 			<div>
 				<div className={`container ${completed.length === questions.length && questions.length ? '' : 'hide'}`}>
@@ -76,7 +83,9 @@ export class GameResults extends Component {
 							</h3>
 							<h3 className="centered">Results: <span>{correct.length}/{questions.length}</span></h3>
 								<ul>
-									{ questions.length ? this.renderResults() : ''}
+									<ReactCSSTransitionGroup {... transitionOptions}>
+										{ questions.length ? this.renderResults() : ''}
+									</ReactCSSTransitionGroup>
 								</ul>
 						</div>
 					</div>

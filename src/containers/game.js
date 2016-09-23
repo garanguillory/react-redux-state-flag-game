@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {select} from '../actions/index';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import classNames from 'classnames';
 
@@ -62,6 +63,12 @@ export class Game extends Component {
 				return question.answered
 		});
 
+		const transitionOptions = {
+			transitionName: "slide",
+			transitionEnterTimeout: 500,
+			transitionLeaveTimeout: 500
+		};
+
 		return (
 				<div className={`container ${completed.length === questions.length ? 'hide' : ''}`}>
 					{questions.length ? <div className="row centered"> <h4> Question #{currentQuestion + 1} </h4> </div> : ''}
@@ -69,15 +76,21 @@ export class Game extends Component {
 						<ul className="game-layout centered">
 							<li>
 					  		<ul>
-						  		{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 === 0}) : ''}
+						  		<ReactCSSTransitionGroup transitionName="slide-from-left" transitionEnterTimeout={2000} transitionLeaveTimeout={2000}>
+							  		{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 === 0}) : ''}
+							  	</ReactCSSTransitionGroup>
 					  		</ul>
 							</li>
 							<li>
-								{ questions.length ? this.renderQuestion(currentQuestion) : ''}
+								<ReactCSSTransitionGroup transitionName="drop-in" transitionEnterTimeout={2000} transitionLeaveTimeout={2000}>
+									{ questions.length ? this.renderQuestion(currentQuestion) : ''}
+								</ReactCSSTransitionGroup>
 							</li>
 							<li>
 								<ul>
-						    	{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 !== 0}) : ''}
+									<ReactCSSTransitionGroup transitionName="slide-from-right" transitionEnterTimeout={2000} transitionLeaveTimeout={2000}>
+							    	{ questions.length ? this.renderAnswerChoices(currentQuestion).filter((item, index)=> {return index % 2 !== 0}) : ''}
+							    </ReactCSSTransitionGroup>
 						    </ul>
 							</li>
 						</ul>

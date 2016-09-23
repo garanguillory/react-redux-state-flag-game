@@ -11,8 +11,42 @@ ul {
 	padding-left: 0;
 	li {
 		list-style: none;
+		position: relative;
 	}
 }
+
+/* starting state of animation */
+.drop-in-enter {
+	top: -600px;
+}
+
+.slide-from-left-enter {
+	right: 400px;
+}
+
+.slide-from-right-enter {
+	left: 400px;
+}
+
+/* ending state of animation */
+
+.drop-in-enter-active {
+	top: 0px;
+	transition: 0.5s ease-in;
+}
+
+.slide-from-left-enter-active {
+	right: 0px;
+	transition: 0.5s ease-in all;
+}
+
+.slide-from-right-enter-active {
+	left: 0px;
+	transition: 0.5s ease-in all;
+}
+
+/* end of transitions */
+
 
 .centered {
 	text-align: center;
@@ -81,6 +115,7 @@ ul {
 	height: auto;
 	margin-bottom: 15em;
 	max-width: 100%;
+	position: relative;
 }
 
 .game-layout {

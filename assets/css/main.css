@@ -8,8 +8,33 @@ body {
 ul {
   padding-left: 0; }
   ul li {
-    list-style: none; }
+    list-style: none;
+    position: relative; }
 
+/* starting state of animation */
+.drop-in-enter {
+  top: -600px; }
+
+.slide-from-left-enter {
+  right: 400px; }
+
+.slide-from-right-enter {
+  left: 400px; }
+
+/* ending state of animation */
+.drop-in-enter-active {
+  top: 0px;
+  transition: 0.5s ease-in; }
+
+.slide-from-left-enter-active {
+  right: 0px;
+  transition: 0.5s ease-in all; }
+
+.slide-from-right-enter-active {
+  left: 0px;
+  transition: 0.5s ease-in all; }
+
+/* end of transitions */
 .centered {
   text-align: center; }
 
@@ -60,7 +85,8 @@ ul {
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.67);
   height: auto;
   margin-bottom: 15em;
-  max-width: 100%; }
+  max-width: 100%;
+  position: relative; }
 
 .game-layout {
   margin-bottom: -10%; }
