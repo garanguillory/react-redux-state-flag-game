@@ -29,25 +29,31 @@ export class GameResults extends Component {
 					<ul className="results-row">
 						<li>
 							<img 
-								className="results-flag" 
-								src={`../../assets/images/state_flag/${question.question.answer}StateFlag.svg.png`} 
-								alt={question.question.answer} />
+									className="results-flag" 
+									src={`../../assets/images/state_flag/${question.question.answer}StateFlag.svg.png`} 
+									alt={question.question.answer} />
 						</li>
 						<li>
-							<img 
-								className="results-map"
-								src={`../../assets/images/state_location/${question.question.answer}StateLocation.svg.png`}
-								alt={question.question.answer} />
-						</li>
-						<li>
-							<img 
-								className="results-map"
-								src={`../../assets/images/state_location/${question.selected ? question.selected: "Texas"}StateLocation.svg.png`}
-								alt={question.selected ? question.selected: "Texas"} />
+							<ul className="maps">
+								<li>
+									<img 
+										className="results-map "
+										src={`../../assets/images/state_location/${question.question.answer}StateLocation.svg.png`}
+										alt={question.question.answer} />
+										<span>Correct Answer: {question.question.answer}</span>
+								</li>
+								<li>
+									<img 
+										className="results-map "
+										src={`../../assets/images/state_location/${question.selected ? question.selected: "Texas"}StateLocation.svg.png`}
+										alt={question.selected ? question.selected: "Texas"} />
+										<span>Your Answer: {question.selected}</span>
+								</li>
+							</ul>
 						</li>
 					</ul>
 
-					<hr/>
+					
 
 				</li>
 			);
@@ -75,13 +81,21 @@ export class GameResults extends Component {
 				<div className={`container ${completed.length === questions.length && questions.length ? '' : 'hide'}`}>
 					<div className="row">
 						<div className="game-results">
-							<h3 className="centered">
-								Play again? 
-								<button onClick={() => this.props.newGame(0)} className="btn btn-secondary">
-									New Game 
-								</button>
-							</h3>
-							<h3 className="centered">Results: <span>{correct.length}/{questions.length}</span></h3>
+							<ul className="game-again centered">
+								<li>
+									<h3>Results: <span>{correct.length}/{questions.length}</span></h3>
+								</li>
+								<li>
+									<h3>Play again?</h3>
+								</li>
+								<li>
+									<button
+										onClick={() => this.props.newGame(0)}
+										className="btn btn-secondary">
+											New Game 
+									</button>
+								</li>
+							</ul>
 								<ul>
 									<ReactCSSTransitionGroup {... transitionOptions}>
 										{ questions.length ? this.renderResults() : ''}
@@ -109,4 +123,30 @@ function mapDispatchToProps(dispatch){
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameResults);
 
+{/*<ul className="results-row">
+	<li>
+		<img 
+				className="results-flag" 
+				src={`../../assets/images/state_flag/${question.question.answer}StateFlag.svg.png`} 
+				alt={question.question.answer} />
+	</li>
+	<li>
+		
+			<img 
+				className="results-map "
+				src={`../../assets/images/state_location/${question.question.answer}StateLocation.svg.png`}
+				alt={question.question.answer} />
+			
+		
+	</li>
+	<li>
+		
+			<img 
+				className="results-map "
+				src={`../../assets/images/state_location/${question.selected ? question.selected: "Texas"}StateLocation.svg.png`}
+				alt={question.selected ? question.selected: "Texas"} />
+			
+		
+	</li>
+</ul>*/}
 
