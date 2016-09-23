@@ -224,8 +224,10 @@ ul {
 
 		.results-flag {
 			box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.67);
-			height: 200px;
-			width: 300px;
+			min-height: 100px;
+			min-width: 150px;
+			max-height: 200px;
+			max-width: 300px;
 		}
 
 	}
@@ -254,8 +256,10 @@ ul {
 
 	.results-map {
 		box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.67);
-		height: 150px;
-		width: 250px;
+		min-height: 75px;
+		min-width: 125px;
+		max-height: 150px;
+		max-width: 250px;
 	}
 }
 
