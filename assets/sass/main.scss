@@ -264,16 +264,18 @@ ul {
 }
 
 .game-again {
+	height: 2em;
+
 	li {
 		display: inline-block;
 		margin-right: 1em;
 
-		button {
-			vertical-align: middle;
-		}
-
 		&:last-child {
 			margin-right: 0em;
+
+			&:hover {
+				color: lightblue;
+			}
 		}
 	}
 }

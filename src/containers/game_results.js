@@ -82,18 +82,18 @@ export class GameResults extends Component {
 					<div className="row">
 						<div className="game-results">
 							<ul className="game-again centered">
-								<li>
+								<li className="pull-left">
 									<h3>Results: <span>{correct.length}/{questions.length}</span></h3>
 								</li>
-								<li>
+								{/*<li>
 									<h3>Play again?</h3>
-								</li>
-								<li>
-									<button
+								</li>*/}
+								<li className="pull-right">
+									<h3
 										onClick={() => this.props.newGame(0)}
-										className="btn btn-secondary">
+										className="">
 											New Game 
-									</button>
+									</h3>
 								</li>
 							</ul>
 								<ul>

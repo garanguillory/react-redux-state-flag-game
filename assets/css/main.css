@@ -186,10 +186,12 @@ ul {
   max-height: 150px;
   max-width: 250px; }
 
-.game-again li {
-  display: inline-block;
-  margin-right: 1em; }
-  .game-again li button {
-    vertical-align: middle; }
-  .game-again li:last-child {
-    margin-right: 0em; }
+.game-again {
+  height: 2em; }
+  .game-again li {
+    display: inline-block;
+    margin-right: 1em; }
+    .game-again li:last-child {
+      margin-right: 0em; }
+      .game-again li:last-child:hover {
+        color: lightblue; }

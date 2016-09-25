@@ -179,7 +179,7 @@ const questions = [
   {answer: states[39], options: [states[30], states[39], states[12], states[7], states[28], states[9]]},
   {answer: states[40], options: [states[31], states[40], states[14], states[8], states[27], states[10]]},
   {answer: states[41], options: [states[32], states[48], states[41], states[9], states[26], states[14]]},
-  {answer: states[42], options: [states[33], states[49], states[16], states[29], states[42], states[16]]},
+  {answer: states[42], options: [states[33], states[49], states[16], states[29], states[42], states[22]]},
   {answer: states[43], options: [states[34], states[43], states[49], states[28], states[25], states[18]]},
   {answer: states[44], options: [states[12], states[28], states[27], states[44], states[24], states[20]]},
   {answer: states[45], options: [states[10], states[3], states[20], states[26], states[45], states[22]]},
