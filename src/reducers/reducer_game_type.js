@@ -167,7 +167,7 @@ const questions = [
   {answer: states[27], options: [states[20], states[27], states[2], states[42], states[6], states[16]]},
   {answer: states[28], options: [states[21], states[28], states[43], states[44], states[7], states[29]]},
   {answer: states[29], options: [states[22], states[29], states[42], states[0], states[8], states[14]]},
-  {answer: states[30], options: [states[23], states[41], states[30], states[5], states[9], states[13]]},
+  {answer: states[30], options: [states[23], states[41], states[30], states[5], states[2], states[13]]},
   {answer: states[31], options: [states[24], states[42], states[31], states[17], states[10], states[3]]},
   {answer: states[32], options: [states[25], states[32], states[41], states[18], states[19], states[4]]},
   {answer: states[33], options: [states[33], states[43], states[40], states[22], states[18], states[5]]},

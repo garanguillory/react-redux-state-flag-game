@@ -37,14 +37,14 @@ export class GameResults extends Component {
 							<ul className="maps">
 								<li>
 									<img 
-										className="results-map "
+										className="results-map"
 										src={`../../assets/images/state_location/${question.question.answer}StateLocation.svg.png`}
 										alt={question.question.answer} />
 										<span>Correct Answer: {question.question.answer}</span>
 								</li>
 								<li>
 									<img 
-										className="results-map "
+										className="results-map"
 										src={`../../assets/images/state_location/${question.selected ? question.selected: "Texas"}StateLocation.svg.png`}
 										alt={question.selected ? question.selected: "Texas"} />
 										<span>Your Answer: {question.selected}</span>
@@ -85,9 +85,6 @@ export class GameResults extends Component {
 								<li className="pull-left">
 									<h3>Results: <span>{correct.length}/{questions.length}</span></h3>
 								</li>
-								{/*<li>
-									<h3>Play again?</h3>
-								</li>*/}
 								<li className="pull-right">
 									<h3
 										onClick={() => this.props.newGame(0)}
@@ -122,31 +119,4 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameResults);
-
-{/*<ul className="results-row">
-	<li>
-		<img 
-				className="results-flag" 
-				src={`../../assets/images/state_flag/${question.question.answer}StateFlag.svg.png`} 
-				alt={question.question.answer} />
-	</li>
-	<li>
-		
-			<img 
-				className="results-map "
-				src={`../../assets/images/state_location/${question.question.answer}StateLocation.svg.png`}
-				alt={question.question.answer} />
-			
-		
-	</li>
-	<li>
-		
-			<img 
-				className="results-map "
-				src={`../../assets/images/state_location/${question.selected ? question.selected: "Texas"}StateLocation.svg.png`}
-				alt={question.selected ? question.selected: "Texas"} />
-			
-		
-	</li>
-</ul>*/}
 
